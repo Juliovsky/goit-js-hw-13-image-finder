@@ -82,7 +82,7 @@ function createList(data) {
 }
 
 function getMessage(data) {
-    if (data.hits.length <=12) {
+    if (data.hits.length ===12) {
         let notice = PNotify.success({
             title: 'Success!',
             text: `${data.hits.length} images were successfully loaded `,

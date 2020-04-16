@@ -47,7 +47,7 @@ function showImages(e) {
     downloadImg(query.value, pageNum)
         .then(data => {
             getMessage(data);
-            addImage();
+            pageNum+=1;
             refs.cardsList.insertAdjacentHTML('beforeend', createList(data));
         })
     prevQuery = query.value;
@@ -82,22 +82,22 @@ function createList(data) {
 }
 
 function getMessage(data) {
-    if (data.hits.length ===12) {
-        let notice = PNotify.success({
-            title: 'Success!',
-            text: `${data.hits.length} images were successfully loaded `,
-            modules: {
-                Buttons: {
-                    closer: false,
-                    sticker: false
-                }
-            }
-        });
+    // if (data.hits.length ===12) {
+    //     let notice = PNotify.success({
+    //         title: 'Success!',
+    //         text: `${data.hits.length} images were successfully loaded `,
+    //         modules: {
+    //             Buttons: {
+    //                 closer: false,
+    //                 sticker: false
+    //             }
+    //         }
+    //     });
 
-        notice.on('click', function () {
-            notice.close();
-        });
-    };
+    //     notice.on('click', function () {
+    //         notice.close();
+    //     });
+    // };
      if (data.hits.length===0)
         {let noticeErr = PNotify.error({
             title: 'I have nothing for you',

@@ -82,7 +82,7 @@ function createList(data) {
 }
 
 function getMessage(data) {
-    if (data.hits.length > 0) {
+    if (data.hits.length > 0 && data.hits.length <= 12) {
         let notice = PNotify.success({
             title: 'Success!',
             text: `${data.hits.length} images were successfully loaded `,
@@ -97,8 +97,9 @@ function getMessage(data) {
         notice.on('click', function () {
             notice.close();
         });
-    } else {
-        let noticeErr = PNotify.error({
+    };
+     if (data.hits.length===0)
+        {let noticeErr = PNotify.error({
             title: 'I have nothing for you',
             text: `Try once more time. And I will be trying better for you `,
             modules: {
